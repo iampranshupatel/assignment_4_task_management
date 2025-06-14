@@ -294,6 +294,12 @@ header h1 {
   box-shadow: 0 1px 3px var(--shadow-dark);
 }
 
+.task-item.completed .title {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+
 /* 12) Notification Toast */
 .notification {
   position: fixed;
