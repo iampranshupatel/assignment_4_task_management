@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Banner Image Only -->
+    <div class="banner-section">
+      <img src="https://png.pngtree.com/template/20220505/ourmid/pngtree-business-team-banner-task-management-image_1312343.jpg"
+           alt="Organize your day"
+           class="banner" />
+    </div>
+
+    <!-- Moved banner text below the image -->
+    <div class="banner-text">
+      <h2>Stay on Top of Your Tasks</h2>
+      <p>Your personal task manager</p>
+    </div>
+
+    <!-- Header / Title + Theme Toggle -->
+    <header>
+      <h1>My Tasks</h1>
+      <button id="theme-toggle">🌙</button>
+    </header>
+
+    <!-- Controls: Add/Edit Form + Filters -->
+    <section class="controls">
+      <form id="task-form">
+        <input type="hidden" id="task-id" />
+        <input type="text"     id="title"       placeholder="Title"       required />
+        <input type="text"     id="description" placeholder="Description" />
+        <input type="date"     id="due-date"                          />
+        <select    id="category">
+          <option value="Personal">Personal</option>
+          <option value="Work">Work</option>
+          <option value="Urgent">Urgent</option>
+        </select>
+        <select    id="priority">
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+        <button type="submit">Add Task</button>
+      </form>
+
+      <div class="filters">
+        <input type="text" id="search" placeholder="Search…" />
+        <select id="filter-category">
+          <option value="">All Categories</option>
+          <option>Personal</option>
+          <option>Work</option>
+          <option>Urgent</option>
+        </select>
+        <button id="clear-completed">Clear Completed</button>
+      </div>
+    </section>
+
+    <!-- Progress Bar -->
+    <div id="progress-container">
+      <div id="progress-bar"></div>
+    </div>
+
+    <!-- Task Grid / Empty State -->
+    <ul class="tasks-grid" id="task-list"></ul>
+
+    <!-- Toast Notification -->
+    <div id="notification" class="notification"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

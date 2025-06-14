@@ -1,0 +1,341 @@
+/* styles.css */
+
+/* 1) Google Font & Variables */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+  --font: 'Poppins', sans-serif;
+  --bg: #f4f6f8;
+  --card-bg: #ffffff;
+  --text-primary: #2d3748;
+  --text-secondary: #4a5568;
+  --accent: #5a67d8;
+  --accent-light: #ebf4ff;
+  --danger: #e53e3e;
+  --danger-dark: #cc2e2e;
+  --success: #38a169;
+  --shadow-light: rgba(0,0,0,0.1);
+  --shadow-dark: rgba(0,0,0,0.3);
+}
+[data-theme="dark"] {
+  --bg: #1a202c;
+  --card-bg: #2d3748;
+  --text-primary: #edf2f7;
+  --text-secondary: #a0aec0;
+  --accent: #9f7aea;
+  --accent-light: #4c51bf;
+  --danger-dark: #c53030;
+  --shadow-light: rgba(0,0,0,0.5);
+  --shadow-dark: rgba(0,0,0,0.7);
+}
+
+/* 2) Animations */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-5px); }
+}
+
+/* 3) Base Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem;
+}
+
+/* 4) Banner Section */
+.banner-section {
+  position: relative;
+  margin: -1rem -1rem 1rem;
+  width: calc(100% + 2rem);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px var(--shadow-light);
+  animation: fadeInDown 0.6s ease-out;
+}
+.banner-section .banner {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* 5) Banner Text Below Image */
+.banner-text {
+  text-align: center;
+  margin: 1rem 0;
+  animation: fadeInUp 0.6s ease-out;
+}
+.banner-text h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.banner-text p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+/* 6) Header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--card-bg);
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px var(--shadow-light);
+  animation: fadeInDown 0.5s ease-out;
+}
+header h1 {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+#theme-toggle:hover {
+  transform: scale(1.2);
+}
+
+/* 7) Controls (mobile-first) */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: var(--card-bg);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px var(--shadow-light);
+  animation: fadeInUp 0.6s ease-out;
+}
+/* 7a) Form */
+.controls form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  animation: fadeInUp 0.7s ease-out;
+}
+.controls form input,
+.controls form select,
+.controls form button {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 0.5rem;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.controls form input:focus,
+.controls form select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 6px var(--accent-light);
+}
+.controls form button {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+}
+.controls form button:hover {
+  background: var(--accent-light);
+  transform: translateY(-2px);
+}
+
+/* 7b) Filters */
+.controls .filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  animation: fadeInUp 0.8s ease-out;
+}
+.controls .filters input,
+.controls .filters select,
+.controls .filters button {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 0.5rem;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.controls .filters input:focus,
+.controls .filters select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 6px var(--accent-light);
+}
+/* ensure “All Categories” never cuts off */
+.controls .filters select {
+  min-width: 160px;
+}
+/* enlarge search field */
+.controls .filters input#search {
+  min-width: 160px;
+  width: 100%;
+}
+.controls .filters button {
+  background: var(--danger);
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+}
+.controls .filters button:hover {
+  background: var(--danger-dark);
+  transform: translateY(-2px);
+}
+
+/* 8) Progress Bar */
+#progress-container {
+  margin: 0 0 1rem;
+  background: var(--accent-light);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  height: 0.75rem;
+  animation: fadeInUp 0.8s ease-out;
+}
+#progress-bar {
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  transition: width 0.6s ease;
+}
+
+/* 9) Empty State */
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-secondary);
+  animation: fadeInUp 0.6s ease-out;
+}
+.empty-state img {
+  max-width: 180px;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+/* 10) Task Grid */
+.tasks-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  animation: fadeInUp 0.9s ease-out;
+}
+
+/* 11) Task-Card Control Bar Styling */
+.task-item .controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background: var(--accent-light);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.75rem;
+  margin-top: 0.5rem;
+}
+.task-item .controls button {
+  background: var(--card-bg);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px var(--shadow-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: background 0.2s, transform 0.2s;
+}
+.task-item .controls button:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: translateY(-2px);
+}
+.task-item .controls button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px var(--shadow-dark);
+}
+
+/* 12) Notification Toast */
+.notification {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px var(--shadow-light);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.notification.show {
+  opacity: 1;
+  pointer-events: auto;
+  animation: bounce 0.6s ease;
+}
+
+/* 13) Desktop Overrides */
+@media (min-width: 769px) {
+  .controls {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+  }
+  .controls form {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    flex: 2;
+  }
+  .controls form input,
+  .controls form select,
+  .controls form button {
+    width: auto;
+  }
+  .controls .filters {
+    flex-direction: row;
+    flex: 1;
+    justify-content: flex-end;
+  }
+  .tasks-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  .controls .filters input#search {
+    width: auto;
+    flex: 1 1 200px;
+  }
+}
+
+/* 14) Optional: hide due-date under 400px */
+@media (max-width: 400px) {
+  #due-date { display: none; }
+}
