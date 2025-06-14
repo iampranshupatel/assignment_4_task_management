@@ -79,6 +79,18 @@ body {
   object-fit: cover;
 }
 
+/* --- Responsive banner: show full image on narrow viewports --- */
+@media (max-width: 600px) {
+  .banner-section .banner {
+    height: auto;           /* let height grow to preserve aspect ratio */
+    object-fit: contain;    /* show the entire image, with letterboxing if needed */
+  }
+  
+  .banner-section {
+    overflow: visible;      /* make sure nothing’s hidden */
+  }
+}
+
 /* 5) Banner Text Below Image */
 .banner-text {
   text-align: center;
